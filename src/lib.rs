@@ -1,9 +1,5 @@
 #[macro_export]
 macro_rules! swh {
-    (andika($expression:expr)) => (
-        println!("{:?}", $expression);
-    );    
-
     (wacha $name:ident = $expression:expr) => (
         #[allow(unused_mut)]
         let mut $name = $expression;
@@ -17,6 +13,15 @@ macro_rules! swh {
                 $matokeo.push($i.clone())
             }
         }
+    );
+
+    // Functions
+    (andika($expression:expr)) => (
+        println!("{:?}", $expression);
+    );    
+
+    (urefu($expression:expr)) => (
+        $expression.len()
     );
 }
 
@@ -48,5 +53,14 @@ mod tests {
         );
 
         assert_eq!(matokeo, vec![0,2,4,6,8,10]);
+    }
+
+    #[test]
+    fn len() {
+        let l = swh!(
+            urefu(vec![1,2,4])
+        );
+
+        assert_eq!(3, l);
     }
 }
