@@ -2,7 +2,9 @@
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> A dsl of the swahili-lang embedded in a Rust macro
+> A DSL of the swahili-lang embedded in a Rust macro
+>
+> A DSL (Domain Specific Language) is a mini "language" embedded in a Rust macro.
 
 ## Install
 
@@ -15,17 +17,6 @@ Cargo.toml
 ```sh
 cargo test
 ```
-
-## Author
-
-👤 **collinsmuriuki**
-
-* Github: [@collinsmuriuki](https://github.com/collinsmuriuki)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
 
 ## 📝 License
 
