@@ -5,6 +5,13 @@ macro_rules! swh {
         let mut $name = $expression;
     );
 
+    (wacha_mut $name:ident = $expression:expr) => (
+        {
+            #[allow(unused_mut)]
+            let mut $name = $expression;
+        }
+    );
+
     ($matokeo:ident; kwa $i:ident katika $iterator:expr => kama $condition:expr) => (
         let mut $matokeo = vec![];
 
@@ -12,6 +19,16 @@ macro_rules! swh {
             if $condition {
                 $matokeo.push($i.clone())
             }
+        }
+    );
+
+    ([$($val:expr),*]) => (
+        {
+            let mut vec = Vec::new();
+            $(
+                vec.push($val);
+            )*
+            vec
         }
     );
 
@@ -62,5 +79,11 @@ mod tests {
         );
 
         assert_eq!(3, l);
+    }
+
+    #[test]
+    fn list() {
+        let l = swh!([1,2,4]);
+        assert_eq!(l, vec![1,2,4]);
     }
 }
