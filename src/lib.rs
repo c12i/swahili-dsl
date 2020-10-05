@@ -9,3 +9,14 @@ macro_rules! swh {
     
     }};
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn andika() {
+        swh!(andika("Habari Duinia"));
+        assert!(true);
+    }
+}
