@@ -1,13 +1,23 @@
 #[macro_export]
 macro_rules! swh {
-    (andika($expression:expr)) => {
+    (andika($expression:expr)) => (
         println!("{:?}", $expression);
-    };    
+    );    
 
-    (wacha $name:ident = $expression:expr) => {
+    (wacha $name:ident = $expression:expr) => (
         #[allow(unused_mut)]
         let mut $name = $expression;
-    };
+    );
+
+    ($matokeo:ident; kwa $i:ident katika $iterator:expr => kama $condition:expr) => (
+        let mut $matokeo = vec![];
+
+        for $i in $iterator {
+            if $condition {
+                $matokeo.push($i.clone())
+            }
+        }
+    );
 }
 
 #[cfg(test)]
@@ -15,7 +25,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn andika() {
+    fn print_statement() {
         swh!(
             andika("Habari Duinia")
         );
@@ -23,11 +33,20 @@ mod tests {
     }
 
     #[test]
-    fn wacha() {
+    fn variables() {
         swh!(
             wacha jina = 2020
         );
         jina += 10;
         assert_eq!(jina, 2030);
+    }
+
+    #[test]
+    fn list_comprehension() {
+        swh!(
+           matokeo; kwa n katika 0..=10 => kama n%2 == 0
+        );
+
+        assert_eq!(matokeo, vec![0,2,4,6,8,10]);
     }
 }
