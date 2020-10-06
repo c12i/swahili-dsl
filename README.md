@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Travis CI](https://travis-ci.com/collinsmuriuki/swahili-dsl.svg?branch=master)]("https://travis-ci.com/collinsmuriuki/swahili-dsl)
 
-> An attempt of creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Will continue to expand on it as I practice my declarative macro skills.
+> An attempt of creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Will continue to expand on it as I build on my declarative macro knowledge.
 >
 > Heavily influenced by [swahili-lang](https://github.com/malcolmkiano/swahili) and [macro-lisp](https://github.com/JunSuzukiJapan/macro-lisp)
 
