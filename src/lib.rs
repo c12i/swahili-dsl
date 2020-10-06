@@ -11,6 +11,10 @@ macro_rules! swh {
         let mut $name = $expression;
     );
 
+    (suluhisha $expression:expr) => (
+        $expression as usize
+    );
+
     // Comprehensions
     ($matokeo:ident; kwa $i:ident katika $iterator:expr => kama $condition:expr) => (
         swh!(wacha_mut $matokeo = Vec::new()); 
@@ -114,5 +118,11 @@ mod tests {
         rhs.insert("jina", "Juma");
 
         assert_eq!(hm, rhs);
+    }
+
+    #[test]
+    fn eval() {
+        swh!(wacha hesabu = swh!(suluhisha 4 * 4));
+        assert_eq!(hesabu, 16);
     }
 }
