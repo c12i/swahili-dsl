@@ -36,8 +36,4 @@ swh!(wacha hesabu = swh!(suluhisha (12/4) * (16/4)));
 cargo test
 ```
 
-## 📝 License
-
-Copyright © 2020 [collinsmuriuki](https://github.com/collinsmuriuki).
-
 This project is [MIT](LICENSE) licensed.
