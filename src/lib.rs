@@ -1,36 +1,42 @@
 #[macro_export]
 macro_rules! swh {
+    // Assignment operators
     (wacha $name:ident = $expression:expr) => (
         #[allow(unused_mut)]
         let mut $name = $expression;
     );
 
     (wacha_mut $name:ident = $expression:expr) => (
-        {
-            #[allow(unused_mut)]
-            let mut $name = $expression;
-        }
+        #[allow(unused_mut)]
+        let mut $name = $expression;
     );
 
+    // Comprehensions
     ($matokeo:ident; kwa $i:ident katika $iterator:expr => kama $condition:expr) => (
-        let mut $matokeo = vec![];
-
+        swh!(wacha_mut $matokeo = Vec::new()); 
         for $i in $iterator {
             if $condition {
                 $matokeo.push($i.clone())
             }
         }
     );
-
-    (orodha -> [$($val:expr),*]) => (
-        {
+    
+    // Collections
+    (orodha -> [$($val:expr),*]) => ({
             let mut vec = Vec::new();
             $(
                 vec.push($val);
             )*
             vec
-        }
-    );
+    });
+
+    (kamusi -> $($k:expr => $v:expr),*) => ({
+        let mut hm = std::collections::HashMap::new();
+        $(
+            hm.insert($k, $v);
+        )*
+        hm
+    });
 
     // Functions
     (andika($expression:expr)) => (
@@ -42,10 +48,6 @@ macro_rules! swh {
     );
 
     // Statements
-    (wacha) => (
-        let
-    );
-
     (kweli) => (
         true
     );
@@ -98,5 +100,19 @@ mod tests {
     fn list() {
         let l = swh!(orodha -> [1,2,4]);
         assert_eq!(l, vec![1,2,4]);
+    }
+
+    #[test]
+    fn map() {
+        let hm = swh!(kamusi -> 
+            "id" => "#12",
+            "jina" => "Juma"
+        );
+
+        let mut rhs = std::collections::HashMap::new();
+        rhs.insert("id", "#12");
+        rhs.insert("jina", "Juma");
+
+        assert_eq!(hm, rhs);
     }
 }
