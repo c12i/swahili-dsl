@@ -22,7 +22,7 @@ macro_rules! swh {
         }
     );
 
-    ([$($val:expr),*]) => (
+    (orodha -> [$($val:expr),*]) => (
         {
             let mut vec = Vec::new();
             $(
@@ -39,6 +39,19 @@ macro_rules! swh {
 
     (urefu($expression:expr)) => (
         $expression.len()
+    );
+
+    // Statements
+    (wacha) => (
+        let
+    );
+
+    (kweli) => (
+        true
+    );
+
+    (uwongo) => (
+        false
     );
 }
 
@@ -83,7 +96,7 @@ mod tests {
 
     #[test]
     fn list() {
-        let l = swh!([1,2,4]);
+        let l = swh!(orodha -> [1,2,4]);
         assert_eq!(l, vec![1,2,4]);
     }
 }
