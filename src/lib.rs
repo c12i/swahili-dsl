@@ -14,7 +14,7 @@
 //!swh!(wacha swala = swh!(uwongo));
 //! 
 //!// list comprehensions
-//!swh!(matokeo; kwa n katika 0..=10 => kama n%2 == 0);
+//!swh!(matokeo; kwa n katika swh!(masafa(0,10)) => kama n%2 == 0);
 //! 
 //!// inbuilt functions
 //!swh!(wacha urefu = swh!(urefu(vec![1,2,4])));
@@ -138,10 +138,7 @@ mod tests {
 
     #[test]
     fn list_comprehension() {
-        swh!(
-           matokeo; kwa n katika 0..=10 => kama n%2 == 0
-        );
-
+        swh!(matokeo; kwa n katika swh!(masafa(0,10)) => kama n%2 == 0);
         assert_eq!(matokeo, vec![0,2,4,6,8,10]);
     }
 
@@ -150,7 +147,6 @@ mod tests {
         let l = swh!(
             urefu(vec![1,2,4])
         );
-
         assert_eq!(3, l);
     }
 
@@ -169,7 +165,6 @@ mod tests {
         let mut rhs = std::collections::HashMap::new();
         rhs.insert("id", "#12");
         rhs.insert("jina", "Juma");
-
         assert_eq!(hm, rhs);
     }
 

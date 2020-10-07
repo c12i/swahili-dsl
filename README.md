@@ -18,7 +18,7 @@ swh!(wacha swala = swh!(kweli));
 swh!(wacha swala = swh!(uwongo));
 
 // list comprehensions
-swh!(matokeo; kwa n katika 0..=10 => kama n%2 == 0);
+swh!(matokeo; kwa n katika swh!(masafa(0,10)) => kama n%2 == 0);
 
 // inbuilt functions
 swh!(wacha urefu = swh!(urefu(vec![1,2,4])));
