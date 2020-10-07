@@ -2,6 +2,10 @@
 name = "swahili-dsl"
 version = "0.1.0"
 authors = ["Collins Muriuki <murerwacollins@gmail.com>"]
+description = "An attempt of creating a DSL. Built for educational purposes."
+repository = "https://github.com/collinsmuriuki/swahili-dsl"
+readme = "README.md"
+license = "MIT"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
