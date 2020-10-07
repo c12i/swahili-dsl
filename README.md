@@ -3,7 +3,7 @@
 [![crates.io](https://img.shields.io/crates/v/swahili-dsl)](https://crates.io/crates/swahili-dsl)
 [![Travis CI](https://travis-ci.com/collinsmuriuki/swahili-dsl.svg?branch=master)]("https://travis-ci.com/collinsmuriuki/swahili-dsl)
 
-> An attempt of creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Made for educational purposes.
+> An attempt at creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Made for educational purposes.
 >
 > Heavily influenced by [swahili-lang](https://github.com/malcolmkiano/swahili) and [macro-lisp](https://github.com/JunSuzukiJapan/macro-lisp)
 
