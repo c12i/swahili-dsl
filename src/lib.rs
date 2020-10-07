@@ -1,7 +1,7 @@
 //! ## swahili-dsl 
-//! An attempt of creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Built for educational purposes.
-//!>
-//!> Heavily influenced by [swahili-lang](https://github.com/malcolmkiano/swahili) and [macro-lisp](https://github.com/JunSuzukiJapan/macro-lisp)
+//! An attempt of creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Made for educational purposes.
+//! 
+//!Heavily influenced by [swahili-lang](https://github.com/malcolmkiano/swahili) and [macro-lisp](https://github.com/JunSuzukiJapan/macro-lisp)
 
 //!## Examples
 
@@ -17,8 +17,9 @@
 //!swh!(matokeo; kwa n katika 0..=10 => kama n%2 == 0);
 //! 
 //!// inbuilt functions
-//!let l = swh!(urefu(vec![1,2,4]));
+//!swh!(wacha urefu = swh!(urefu(vec![1,2,4])));
 //!swh!(andika("Habari Duinia"));
+//!swh!(wacha orodha = swh!(masafa(1, 5)));
 //! 
 //!// collections
 //!swh!(wacha l = swh!(orodha -> [1,2,4]));
@@ -99,6 +100,11 @@ macro_rules! swh {
         $expression.len()
     );
 
+    (masafa($start:expr, $stop:expr)) => ({
+        let vector: Vec<_> = ($start..=$stop).into_iter().collect();
+        vector
+    });
+
     // Statements
     (kweli) => (
         true
@@ -178,5 +184,12 @@ mod tests {
         swh!(wacha swala = swh!(kweli));
         swh!(swala => swh!(andika("Kweli")) ; swh!(andika("Uwongo")));
         assert!(swala);
+    }
+
+    #[test]
+    fn range() {
+        swh!(wacha orodha = swh!(masafa(1, 5)));
+        swh!(andika(orodha));
+        assert_eq!(vec![1,2,3,4,5], orodha);
     }
 }

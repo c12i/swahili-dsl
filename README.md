@@ -22,8 +22,9 @@ swh!(wacha swala = swh!(uwongo));
 swh!(matokeo; kwa n katika 0..=10 => kama n%2 == 0);
 
 // inbuilt functions
-let l = swh!(urefu(vec![1,2,4]));
+swh!(wacha urefu = swh!(urefu(vec![1,2,4])));
 swh!(andika("Habari Duinia"));
+swh!(wacha orodha = swh!(masafa(1, 5)));
 
 // collections
 swh!(wacha l = swh!(orodha -> [1,2,4]));
