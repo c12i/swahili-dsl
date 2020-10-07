@@ -42,6 +42,15 @@ macro_rules! swh {
         hm
     });
 
+    // Ternary operator
+    ($condition:expr => $expression:expr ; $alternative:expr) => (
+        if $condition {
+            $expression
+        } else {
+            $alternative
+        }
+    );
+
     // Functions
     (andika($expression:expr)) => (
         println!("{:?}", $expression);
@@ -102,17 +111,16 @@ mod tests {
 
     #[test]
     fn list() {
-        let l = swh!(orodha -> [1,2,4]);
+        swh!(wacha l = swh!(orodha -> [1,2,4]));
         assert_eq!(l, vec![1,2,4]);
     }
 
     #[test]
     fn map() {
-        let hm = swh!(kamusi -> 
+        swh!(wacha hm = swh!(kamusi -> 
             "id" => "#12",
             "jina" => "Juma"
-        );
-
+        ));
         let mut rhs = std::collections::HashMap::new();
         rhs.insert("id", "#12");
         rhs.insert("jina", "Juma");
@@ -124,5 +132,12 @@ mod tests {
     fn eval() {
         swh!(wacha hesabu = swh!(suluhisha 4 * 4));
         assert_eq!(hesabu, 16);
+    }
+
+    #[test]
+    fn ternary() {
+        swh!(wacha swala = swh!(kweli));
+        swh!(swala => swh!(andika("Kweli")) ; swh!(andika("Uwongo")));
+        assert!(swala);
     }
 }

@@ -13,6 +13,10 @@
 // declaring variables
 swh!(wacha jina = 2020);
 
+// booleans
+swh!(wacha swala = swh!(kweli));
+swh!(wacha swala = swh!(uwongo));
+
 // list comprehensions
 swh!(matokeo; kwa n katika 0..=10 => kama n%2 == 0);
 
@@ -21,14 +25,19 @@ let l = swh!(urefu(vec![1,2,4]));
 swh!(andika("Habari Duinia"));
 
 // collections
-let l = swh!(orodha -> [1,2,4]);
-let hm = swh!(kamusi -> 
+swh!(wacha l = swh!(orodha -> [1,2,4]));
+swh!(wacha hm = swh!(kamusi -> 
             "id" => "#12",
-            "jina" => "Juma");
+            "jina" => "Juma"
+        ));
 
 // arithmetic operations
 swh!(wacha hesabu = swh!(suluhisha 4 * 4));
 swh!(wacha hesabu = swh!(suluhisha (12/4) * (16/4)));
+
+// ternary operator
+swh!(wacha swala = swh!(kweli));
+swh!(swala => swh!(andika("Kweli")) ; swh!(andika("Uwongo")));
 ```
 
 ## Run tests
