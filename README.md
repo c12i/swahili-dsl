@@ -33,9 +33,10 @@ swh!(wacha orodha = swh!(masafa(1, 5)));
 
 // collections
 swh!(wacha l = swh!(orodha -> [1,2,4]));
-swh!(wacha hm = swh!(kamusi -> 
-            "id" => "#12",
-            "jina" => "Juma"));
+swh!(wacha hm = swh!(kamusi -> {
+    "id" => "#12",
+    "jina" => "Juma"
+}));
 
 // arithmetic operations
 swh!(wacha hesabu = swh!(suluhisha 4 * 4));

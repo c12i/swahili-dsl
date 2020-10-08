@@ -1,4 +1,4 @@
-//! ## swahili-dsl 
+//!## swahili-dsl 
 //!An attempt at creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Made for educational purposes.
 //! 
 //!Heavily influenced by [swahili-lang](https://github.com/malcolmkiano/swahili) and [macro-lisp](https://github.com/JunSuzukiJapan/macro-lisp)
@@ -29,9 +29,10 @@
 //! 
 //!// collections
 //!swh!(wacha l = swh!(orodha -> [1,2,4]));
-//!swh!(wacha hm = swh!(kamusi -> 
-//!            "id" => "#12",
-//!            "jina" => "Juma"));
+//!swh!(wacha hm = swh!(kamusi -> {
+//!     "id" => "#12",
+//!     "jina" => "Juma"
+//!}));
 //! 
 //!// arithmetic operations
 //!swh!(wacha hesabu = swh!(suluhisha 4 * 4));
@@ -87,7 +88,7 @@ macro_rules! swh {
             vec
     });
 
-    (kamusi -> $($k:expr => $v:expr),*) => ({
+    (kamusi -> {$($k:expr => $v:expr),*}) => ({
         let mut hm = std::collections::HashMap::new();
         $(
             hm.insert($k, $v);
@@ -141,17 +142,14 @@ mod tests {
 
     #[test]
     fn print_statement() {
-        swh!(
-            andika("Habari Duinia")
-        );
+        // hello world!
+        swh!(andika("Habari Duinia!"));
         assert!(true);
     }
 
     #[test]
     fn variables() {
-        swh!(
-            wacha jina = 2020
-        );
+        swh!(wacha jina = 2020);
         jina += 10;
         assert_eq!(jina, 2030);
     }
@@ -178,10 +176,10 @@ mod tests {
 
     #[test]
     fn map() {
-        swh!(wacha hm = swh!(kamusi -> 
+        swh!(wacha hm = swh!(kamusi -> {
             "id" => "#12",
             "jina" => "Juma"
-        ));
+        }));
         let mut rhs = std::collections::HashMap::new();
         rhs.insert("id", "#12");
         rhs.insert("jina", "Juma");
