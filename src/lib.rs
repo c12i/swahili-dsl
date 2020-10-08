@@ -1,5 +1,5 @@
 //! ## swahili-dsl 
-//! An attempt at creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Made for educational purposes.
+//!An attempt at creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Made for educational purposes.
 //! 
 //!Heavily influenced by [swahili-lang](https://github.com/malcolmkiano/swahili) and [macro-lisp](https://github.com/JunSuzukiJapan/macro-lisp)
 
@@ -31,6 +31,7 @@
 //!// arithmetic operations
 //!swh!(wacha hesabu = swh!(suluhisha 4 * 4));
 //!swh!(wacha hesabu = swh!(suluhisha (12/4) * (16/4)));
+//!swh!(wacha hesabu = swh!(suluhisha 4 * 4, suluhisha 4 * 2));
 //! 
 //!// ternary operator
 //!swh!(wacha swala = swh!(kweli));

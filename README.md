@@ -35,6 +35,7 @@ swh!(wacha hm = swh!(kamusi ->
 // arithmetic operations
 swh!(wacha hesabu = swh!(suluhisha 4 * 4));
 swh!(wacha hesabu = swh!(suluhisha (12/4) * (16/4)));
+swh!(wacha hesabu = swh!(suluhisha 4 * 4, suluhisha 4 * 2));
 
 // ternary operator
 swh!(wacha swala = swh!(kweli));
