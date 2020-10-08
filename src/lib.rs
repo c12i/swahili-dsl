@@ -55,6 +55,11 @@ macro_rules! swh {
         $expression as usize
     );
 
+    (suluhisha $e:expr, $(suluhisha es:expr),+) => {{
+        swh!(suluhisha $e)
+        swh!($(suluhisha $es),+)
+    }};
+
     // Comprehensions
     ($matokeo:ident; kwa $i:ident katika $iterator:expr => kama $condition:expr) => (
         swh!(wacha_mut $matokeo = Vec::new()); 
