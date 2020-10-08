@@ -15,7 +15,13 @@
 //! 
 //!// list comprehensions
 //!swh!(matokeo; kwa n katika swh!(masafa(0,10)) => kama n%2 == 0);
-//! 
+//!
+//! // Declaring functions (very rudimental)
+//!swh!(shughuli ongeza(n: u32) -> u32 {
+//!    rudisha n + 11
+//!});
+//!swh!(wacha hesabu = ongeza(1));
+//!  
 //!// inbuilt functions
 //!swh!(wacha urefu = swh!(urefu(vec![1,2,4])));
 //!swh!(andika("Habari Duinia"));
@@ -98,7 +104,14 @@ macro_rules! swh {
         }
     );
 
-    // Functions
+    // Declaring functions
+    (shughuli $f:ident($($arg:ident: $t:ty),*) -> $ret:ty { rudisha $r:expr }) => (
+        fn $f($($arg: $t)*) -> $ret {
+            $r
+        }
+    );
+
+    // "Inbuilt" functions
     (andika($expression:expr)) => (
         println!("{:?}", $expression);
     );    
@@ -203,5 +216,15 @@ mod tests {
         swh!(wacha orodha = swh!(masafa(1, 5)));
         swh!(andika(orodha));
         assert_eq!(vec![1,2,3,4,5], orodha);
+    }
+
+
+    #[test]
+    fn declaring_functions() {
+        swh!(shughuli ongeza(n: u32) -> u32 {
+            rudisha n + 11
+        });
+        swh!(wacha hesabu = ongeza(1));
+        assert_eq!(hesabu, 12);
     }
 }

@@ -20,6 +20,12 @@ swh!(wacha swala = swh!(uwongo));
 // list comprehensions
 swh!(matokeo; kwa n katika swh!(masafa(0,10)) => kama n%2 == 0);
 
+// Declaring functions (very rudimental)
+swh!(shughuli ongeza(n: u32) -> u32 {
+    rudisha n + 11
+});
+swh!(wacha hesabu = ongeza(1));
+
 // inbuilt functions
 swh!(wacha urefu = swh!(urefu(vec![1,2,4])));
 swh!(andika("Habari Duinia"));
