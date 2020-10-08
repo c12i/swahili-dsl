@@ -1,8 +1,8 @@
 [package]
 name = "swahili-dsl"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["Collins Muriuki <murerwacollins@gmail.com>"]
-description = "An attempt at creating a Swahili-based DSL. Built for educational purposes."
+description = "A Swahili-based DSL made for educational purposes."
 repository = "https://github.com/collinsmuriuki/swahili-dsl"
 readme = "README.md"
 keywords = ["dsl"]
