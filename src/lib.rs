@@ -25,8 +25,7 @@
 //!swh!(wacha l = swh!(orodha -> [1,2,4]));
 //!swh!(wacha hm = swh!(kamusi -> 
 //!            "id" => "#12",
-//!            "jina" => "Juma"
-//!        ));
+//!            "jina" => "Juma"));
 //! 
 //!// arithmetic operations
 //!swh!(wacha hesabu = swh!(suluhisha 4 * 4));
@@ -35,7 +34,10 @@
 //! 
 //!// ternary operator
 //!swh!(wacha swala = swh!(kweli));
-//!swh!(swala => swh!(andika("Kweli")) ; swh!(andika("Uwongo")));
+//!swh!(swala => {
+//!     swh!(andika("Kweli")) ;
+//!     swh!(andika("Uwongo"))
+//!});
 //!```
 
 
@@ -88,7 +90,7 @@ macro_rules! swh {
     });
 
     // Ternary operator
-    ($condition:expr => $expression:expr ; $alternative:expr) => (
+    ($condition:expr => {$expression:expr ; $alternative:expr}) => (
         if $condition {
             $expression
         } else {
@@ -188,7 +190,11 @@ mod tests {
     #[test]
     fn ternary() {
         swh!(wacha swala = swh!(kweli));
-        swh!(swala => swh!(andika("Kweli")) ; swh!(andika("Uwongo")));
+        // similar to `true ? ... : ...` where the ? is replaced with a at arrow and : by a semi-colon
+        swh!(swala => {
+            swh!(andika("Kweli")) ;
+            swh!(andika("Uwongo"))
+        });
         assert!(swala);
     }
 

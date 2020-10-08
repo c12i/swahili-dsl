@@ -29,8 +29,7 @@ swh!(wacha orodha = swh!(masafa(1, 5)));
 swh!(wacha l = swh!(orodha -> [1,2,4]));
 swh!(wacha hm = swh!(kamusi -> 
             "id" => "#12",
-            "jina" => "Juma"
-        ));
+            "jina" => "Juma"));
 
 // arithmetic operations
 swh!(wacha hesabu = swh!(suluhisha 4 * 4));
@@ -39,13 +38,16 @@ swh!(wacha hesabu = swh!(suluhisha 4 * 4, suluhisha 4 * 2));
 
 // ternary operator
 swh!(wacha swala = swh!(kweli));
-swh!(swala => swh!(andika("Kweli")) ; swh!(andika("Uwongo")));
+swh!(swala => {
+    swh!(andika("Kweli")) ;
+    swh!(andika("Uwongo"))
+});
 ```
 
 ## Run tests
 
 ```sh
-cargo test
+cargo test -- --show-output
 ```
 
 This project is [MIT](LICENSE) licensed.
