@@ -162,9 +162,7 @@ mod tests {
 
     #[test]
     fn len() {
-        let l = swh!(
-            urefu(vec![1,2,4])
-        );
+        let l = swh!(urefu(vec![1,2,4]));
         assert_eq!(3, l);
     }
 
@@ -201,7 +199,7 @@ mod tests {
     #[test]
     fn ternary() {
         swh!(wacha swala = swh!(kweli));
-        // similar to `true ? ... : ...` where the ? is replaced with a at arrow and : by a semi-colon
+        // similar to `true ? ... : ...` where the ? is replaced with a fat arrow and : with a semi-colon
         swh!(swala => {
             swh!(andika("Kweli")) ;
             swh!(andika("Uwongo"))
