@@ -1,5 +1,5 @@
 //! ## swahili-dsl 
-//! An attempt of creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Made for educational purposes.
+//! An attempt at creating a DSL. A DSL is a mini "language" embedded in a Rust macro. Made for educational purposes.
 //! 
 //!Heavily influenced by [swahili-lang](https://github.com/malcolmkiano/swahili) and [macro-lisp](https://github.com/JunSuzukiJapan/macro-lisp)
 
@@ -55,10 +55,9 @@ macro_rules! swh {
         $expression as usize
     );
 
-    (suluhisha $e:expr, $(suluhisha es:expr),+) => {{
-        swh!(suluhisha $e)
-        swh!($(suluhisha $es),+)
-    }};
+    (suluhisha $e:expr, $(suluhisha $es:expr),+) => {
+        swh!(suluhisha $e) + swh!($(suluhisha $es),+)
+    };
 
     // Comprehensions
     ($matokeo:ident; kwa $i:ident katika $iterator:expr => kama $condition:expr) => (
@@ -177,6 +176,12 @@ mod tests {
     fn eval() {
         swh!(wacha hesabu = swh!(suluhisha 4 * 4));
         assert_eq!(hesabu, 16);
+    }
+
+    #[test]
+    fn variadic() {
+        swh!(wacha hesabu = swh!(suluhisha 4 * 4, suluhisha 4 * 2));
+        assert_eq!(hesabu, 24);
     }
 
     #[test]
